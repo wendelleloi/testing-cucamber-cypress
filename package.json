@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress:run": "cypress run",
-    "postcypress:run": "node ./cypress/support/multiple-cucumber-html-reporter.js && node ./cypress/support/cucumber-html-reporter.js"
+    "report": "node ./cypress/support/multiple-cucumber-html-reporter.js && node ./cypress/support/cucumber-html-reporter.js"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
