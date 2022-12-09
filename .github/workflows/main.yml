@@ -8,8 +8,16 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v4
-        if: failure()
+        if: always()
+      - name: upload reports
+        uses: actions/upload-artifact@v2
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - uses: actions/upload-artifact@v2
+          name: reports
+          path: cypress/reports
+        if: failure()
+          with:
+          - name: cypress-screenshots
+            uses: actions/upload-artifact@v2
+            with:
+              name: screenshots
+              path: cypress/screenshots
