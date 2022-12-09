@@ -4,15 +4,27 @@
   "description": "testing cucamber with cypressssss",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "cypress run --browser chrome --no-exit"
+    "cypress:run": "cypress run",
+    "postcypress:run": "node ./cypress/support/multiple-cucumber-html-reporter.js && node ./cypress/support/cucumber-html-reporter.js"
   },
   "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/support/steps"
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".json"
+    }
   },
   "author": "Wendell Eloi da Silva",
   "license": "ISC",
   "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0",
     "cypress": "^12.0.2",
     "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "dependencies": {
+    "multiple-cucumber-html-reporter": "^3.0.1"
   }
 }
